@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class HotelReservationTest01 {
 
-	// REGULAR CUSTOMER DATE RANGE ENTRY GIVES CHEAPEST, BEST RATED HOTEL AVAILABLE
+	// REGULAR CUSTOMER DATE RANGE ENTRY GIVES BEST RATED HOTEL AVAILABLE
 	@Test
-	public void hotelTestUC06() {
+	public void hotelTestUC07() {
 		ArrayList<HotelReservation> hotelList = new ArrayList<>();
 		HotelReservation hotel1 = new HotelReservation("Lakewood", 110, 90, 3);
 		HotelReservation hotel2 = new HotelReservation("Bridgewood", 150, 50, 4);
@@ -30,12 +30,10 @@ public class HotelReservationTest01 {
 				System.out.println("Entered invalid dates. Try again.");
 			}
 		} while (!x);
-		ArrayList<HotelReservation> cheapestHotels = HotelReservation.findCheapestHotel(hotelList);
-		double totalRate = cheapestHotels.get(0).getRegularCustomerRateOnWeekday()
-				* HotelReservation.numOfWeekdayBookings
-				+ cheapestHotels.get(0).getRegularCustomerRateOnWeekend() * HotelReservation.numOfWeekendBookings;
-		System.out.print(HotelReservation.findBestRatedHotel(cheapestHotels).getHotelName() + "    Rating:"
-				+ HotelReservation.findBestRatedHotel(cheapestHotels).getRating() + "    Total Rate:" + totalRate);
+		HotelReservation bestRatedHotel = HotelReservation.findBestRatedHotel(hotelList);
+		double totalRate = bestRatedHotel.getRegularCustomerRateOnWeekday() * HotelReservation.numOfWeekdayBookings
+				+ bestRatedHotel.getRegularCustomerRateOnWeekend() * HotelReservation.numOfWeekendBookings;
+		System.out.print(bestRatedHotel.getHotelName() + "    Total Rate:" + totalRate);
 		input.close();
 	}
 }

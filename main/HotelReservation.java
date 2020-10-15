@@ -68,9 +68,9 @@ public class HotelReservation {
 		return cheapestHotels;
 	}
 
-	public static HotelReservation findBestRatedHotel(ArrayList<HotelReservation> cheapestHotels) {
-		HotelReservation bestRatedHotel = cheapestHotels.get(0);
-		for (HotelReservation hotel : cheapestHotels) {
+	public static HotelReservation findBestRatedHotel(ArrayList<HotelReservation> hotelList) {
+		HotelReservation bestRatedHotel = hotelList.get(0);
+		for (HotelReservation hotel : hotelList) {
 			if (bestRatedHotel.getRating() < hotel.getRating())
 				bestRatedHotel = hotel;
 		}
