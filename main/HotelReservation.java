@@ -11,11 +11,13 @@ public class HotelReservation {
 	private final double REGULAR_RATE_WEEKEND;
 	public static int numOfWeekendBookings;
 	public static int numOfWeekdayBookings;
+	private float rating;
 
-	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE_WEEKDAY, double REGULAR_RATE_WEEKEND) {
+	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE_WEEKDAY, double REGULAR_RATE_WEEKEND, float rating) {
 		this.HOTEL_NAME = HOTEL_NAME;
 		this.REGULAR_RATE_WEEKDAY = REGULAR_RATE_WEEKDAY;
 		this.REGULAR_RATE_WEEKEND = REGULAR_RATE_WEEKEND;
+		this.rating = rating;
 	}
 
 	public String getHotelName() {
@@ -28,6 +30,10 @@ public class HotelReservation {
 
 	public double getRegularCustomerRateOnWeekend() {
 		return this.REGULAR_RATE_WEEKEND;
+	}
+
+	public float getRating() {
+		return this.rating;
 	}
 
 	public static int timeFormat(String dateToBeFormatted) {
