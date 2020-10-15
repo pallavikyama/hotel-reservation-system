@@ -7,16 +7,17 @@ import java.util.ArrayList;
 
 public class HotelReservation {
 	private final String HOTEL_NAME;
-	private final double REGULAR_RATE_WEEKDAY;
-	private final double REGULAR_RATE_WEEKEND;
-	public static int numOfWeekendBookings;
-	public static int numOfWeekdayBookings;
+	private final double REGULAR_RATE_WEEKDAY, REGULAR_RATE_WEEKEND, REWARD_RATE_WEEKDAY, REWARD_RATE_WEEKEND;
+	public static int numOfWeekendBookings, numOfWeekdayBookings;
 	private float rating;
 
-	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE_WEEKDAY, double REGULAR_RATE_WEEKEND, float rating) {
+	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE_WEEKDAY, double REGULAR_RATE_WEEKEND,
+			double REWARD_RATE_WEEKDAY, double REWARD_RATE_WEEKEND, float rating) {
 		this.HOTEL_NAME = HOTEL_NAME;
 		this.REGULAR_RATE_WEEKDAY = REGULAR_RATE_WEEKDAY;
 		this.REGULAR_RATE_WEEKEND = REGULAR_RATE_WEEKEND;
+		this.REWARD_RATE_WEEKDAY = REWARD_RATE_WEEKDAY;
+		this.REWARD_RATE_WEEKEND = REWARD_RATE_WEEKEND;
 		this.rating = rating;
 	}
 
@@ -30,6 +31,14 @@ public class HotelReservation {
 
 	public double getRegularCustomerRateOnWeekend() {
 		return this.REGULAR_RATE_WEEKEND;
+	}
+
+	public double getRewardCustomerRateOnWeekday() {
+		return this.REWARD_RATE_WEEKDAY;
+	}
+
+	public double getRewardCustomerRateOnWeekend() {
+		return this.REWARD_RATE_WEEKEND;
 	}
 
 	public float getRating() {
