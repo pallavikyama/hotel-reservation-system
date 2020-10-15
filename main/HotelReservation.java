@@ -1,5 +1,7 @@
 package com.blz.hotelreservationsystem.main;
 
+import java.util.ArrayList;
+
 public class HotelReservation {
 	private final String HOTEL_NAME;
 	private final double REGULAR_RATE;
@@ -15,6 +17,27 @@ public class HotelReservation {
 
 	public double getRegularCustomerRate() {
 		return this.REGULAR_RATE;
+	}
+
+	public static int timeFormat(String dateToBeFormatted) {
+		String[] dates = dateToBeFormatted.split(",");
+		return dates.length;
+	}
+
+	public static ArrayList<HotelReservation> findCheapestHotel(ArrayList<HotelReservation> hotelList) {
+		double leastRate = hotelList.get(0).getRegularCustomerRate();
+		ArrayList<HotelReservation> cheapestHotels = new ArrayList<>();
+		for (HotelReservation hotel : hotelList) {
+			if (leastRate > hotel.getRegularCustomerRate()) {
+				leastRate = hotel.getRegularCustomerRate();
+			}
+		}
+		for (HotelReservation hotel : hotelList) {
+			if (leastRate == hotel.getRegularCustomerRate()) {
+				cheapestHotels.add(hotel);
+			}
+		}
+		return cheapestHotels;
 	}
 
 	public static void main(String[] args) {
