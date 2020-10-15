@@ -4,19 +4,25 @@ import java.util.ArrayList;
 
 public class HotelReservation {
 	private final String HOTEL_NAME;
-	private final double REGULAR_RATE;
+	private final double REGULAR_RATE_WEEKDAY;
+	private final double REGULAR_RATE_WEEKEND;
 
-	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE) {
+	public HotelReservation(String HOTEL_NAME, double REGULAR_RATE_WEEKDAY, double REGULAR_RATE_WEEKEND) {
 		this.HOTEL_NAME = HOTEL_NAME;
-		this.REGULAR_RATE = REGULAR_RATE;
+		this.REGULAR_RATE_WEEKDAY = REGULAR_RATE_WEEKDAY;
+		this.REGULAR_RATE_WEEKEND = REGULAR_RATE_WEEKEND;
 	}
 
 	public String getHotelName() {
 		return this.HOTEL_NAME;
 	}
 
-	public double getRegularCustomerRate() {
-		return this.REGULAR_RATE;
+	public double getRegularCustomerRateOnWeekday() {
+		return this.REGULAR_RATE_WEEKDAY;
+	}
+
+	public double getRegularCustomerRateOnWeekend() {
+		return this.REGULAR_RATE_WEEKEND;
 	}
 
 	public static int timeFormat(String dateToBeFormatted) {
@@ -25,15 +31,15 @@ public class HotelReservation {
 	}
 
 	public static ArrayList<HotelReservation> findCheapestHotel(ArrayList<HotelReservation> hotelList) {
-		double leastRate = hotelList.get(0).getRegularCustomerRate();
+		double leastRateOnWeekDay = hotelList.get(0).getRegularCustomerRateOnWeekday();
 		ArrayList<HotelReservation> cheapestHotels = new ArrayList<>();
 		for (HotelReservation hotel : hotelList) {
-			if (leastRate > hotel.getRegularCustomerRate()) {
-				leastRate = hotel.getRegularCustomerRate();
+			if (leastRateOnWeekDay > hotel.getRegularCustomerRateOnWeekday()) {
+				leastRateOnWeekDay = hotel.getRegularCustomerRateOnWeekday();
 			}
 		}
 		for (HotelReservation hotel : hotelList) {
-			if (leastRate == hotel.getRegularCustomerRate()) {
+			if (leastRateOnWeekDay == hotel.getRegularCustomerRateOnWeekday()) {
 				cheapestHotels.add(hotel);
 			}
 		}
