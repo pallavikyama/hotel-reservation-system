@@ -68,6 +68,15 @@ public class HotelReservation {
 		return cheapestHotels;
 	}
 
+	public static HotelReservation findBestRatedHotel(ArrayList<HotelReservation> cheapestHotels) {
+		HotelReservation bestRatedHotel = cheapestHotels.get(0);
+		for (HotelReservation hotel : cheapestHotels) {
+			if (bestRatedHotel.getRating() < hotel.getRating())
+				bestRatedHotel = hotel;
+		}
+		return bestRatedHotel;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to HOTEL RESERVATION Program.");
 	}
